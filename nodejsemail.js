@@ -27,7 +27,14 @@ app.get("/send",function (req,res) {
         text: text
     };
 
-    transporter.sendMail(mailOptions);
+    transporter.sendMail(mailOptions, function (err,info) {
+        if (err) {
+            res.jsonp({success: false});
+        }
+        else {
+            res.jsonp({success: true});
+        }
+    });
 });
 
 const server = http.createServer(app);
