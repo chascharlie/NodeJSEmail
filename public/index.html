@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head lang="en">
+        <meta charset="utf-8">
+        <title>NodeJSEmail</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <section>
+            <h1>NodeJSEmail</h1>
+            <form>
+                <fieldset>
+                    <label for="from">From: </label>
+                    <input type="email" class="from">
+                    <label for="password">Password: </label>
+                    <input type="password" class="password">
+                </fieldset>
+                <fieldset>
+                    <label for="to">To: </label>
+                    <input type="email" class="to">
+                    <label for="subject">Subject: </label>
+                    <input type="text" class="subject">         
+                </fieldset>
+                <fieldset>
+                    <label for="text">Text:</label>
+                    <textarea class="text" rows="7" cols="40"></textarea>
+                </fieldset>
+
+                <button type="button" class="sendButton">Send</button>
+            </form>
+        </section>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+        <script>
+            $(".sendButton").click(function() {
+                $.ajax({
+                    url:"send",
+                    data: {
+                        from: $(".from").val(),
+                        password: $(".password").val(),
+                        to: $(".to").val(),
+                        subject: $(".subject").val(),
+                        text: $(".text").val()
+                    }
+                });
+            });
+        </script>
+    </body>
+</html>
